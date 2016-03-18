@@ -8,6 +8,7 @@ import org.jose4j.jwe.JsonWebEncryption;
 import org.jose4j.keys.AesKey;
 
 import java.security.Key;
+import java.util.Base64;
 
 /**
  * Hello world!
@@ -17,14 +18,13 @@ public class NimbusEncrypt {
     public static void main(String[] args) {
 
         try {
-            String keystring = "ATestKeyATestKeyDummyKeyDummyKey"; // A128CBC_HS256
-//            String keystring = "ATestKeyATestKeyATestKeyATestKeyDummyKeyDummyKeyDummyKeyDummyKey"; // A256CBC_HS512
-            byte[] keybytes = keystring.getBytes("ISO-8859-1");
+            byte[] keybytes = keybytes= Base64.getDecoder().decode("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=");
+
 
 
             // Encode using Nimbus
             JWEHeader header = new JWEHeader(JWEAlgorithm.DIR, EncryptionMethod.A128CBC_HS256);
-            Payload payload = new Payload("TestString");
+            Payload payload = new Payload("{ \"moo\": \"quack\", \"stuff\": { \"a\": 1, \"b\": [ 2, 3, 4 ] }}");
             JWEObject jweObject = new JWEObject(header, payload);
             DirectEncrypter dirEnc = new DirectEncrypter(keybytes);
             jweObject.encrypt(dirEnc);

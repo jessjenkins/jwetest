@@ -8,6 +8,7 @@ import org.jose4j.jwe.KeyManagementAlgorithmIdentifiers;
 import org.jose4j.keys.AesKey;
 
 import java.security.Key;
+import java.util.Base64;
 
 /**
  * Created by jjenkins1 on 19/02/16.
@@ -19,9 +20,8 @@ public class JoseDecrypt {
 
 
         try {
-            String keystring = "ATestKeyATestKeyDummyKeyDummyKey"; // A128CBC_HS256
-            byte[] keybytes = keystring.getBytes("ISO-8859-1");
-            String serializedJwe = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..8xFJdER78EUOXfyCW995JA.HilGHhHcSUP0rrVNK3bTRw.Z8QZAwrjMDlSaNB8DZRDpA";
+            byte[] keybytes = Base64.getDecoder().decode("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=");
+            String serializedJwe = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..jkfpHBIdEL5-LN1q4lXLTw.iLOuYYwoxEoi4ssF9JDDg7NcG4asWUhBeORyGmM78m1aKvD6mGjv7TzpLHLE2MiuuscAUIUo_BB9KuClMb7KfA.CEEerKyT8RC_CZRt7jhv2A";
 
 
             //Decode using jose4j
